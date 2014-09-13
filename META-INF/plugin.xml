@@ -1,12 +1,11 @@
 <idea-plugin version="2">
     <id>net.geekylab.codeshare</id>
     <name>Code Share</name>
-    <version>1.0</version>
+    <version>0.1.0</version>
     <vendor email="johnathan@kodokuman.com" url="http://www.geekylab.net">Geekylab by kodokux</vendor>
 
     <description><![CDATA[
-      Enter short description for your plugin here.<br>
-      <em>most HTML tags may be used</em>
+      Share your code in local networks. jetbrains IDE plugin.<br>
     ]]></description>
 
     <change-notes><![CDATA[

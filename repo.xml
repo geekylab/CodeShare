@@ -1,0 +1,4 @@
+<plugins>
+    <plugin version="0.9.0.7" url="https://github.com/geekylab/CodeShare/raw/master/CodeShare.zip"
+            id="net.geekylab.codeshare"/>
+</plugins>
