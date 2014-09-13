@@ -15,6 +15,7 @@ import java.io.IOException;
 
 /**
  * Created by johna on 08/09/14.
+ * by Geekylab
  */
 public class ShareTabDialog extends DialogWrapper {
 
@@ -36,7 +37,7 @@ public class ShareTabDialog extends DialogWrapper {
             public void run() {
                 try {
                     PeerDiscovery peerDiscovery = CodeShareComponent.getInstance(project).getPeerDiscovery();
-                    final PeerDiscovery.Peer[] peers = peerDiscovery.getPeers(100, (byte) 0);
+                    final PeerDiscovery.Peer[] peers = peerDiscovery.getPeers(1000, (byte) 0);
                     System.out.println(peers.length + " peers found");
 
                     SwingUtilities.invokeLater(new Runnable() {

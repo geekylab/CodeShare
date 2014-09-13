@@ -1,5 +1,6 @@
 package net.geekylab.codeshare.actions;
 
+import com.google.gson.JsonParseException;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.PlatformDataKeys;
@@ -9,6 +10,7 @@ import net.geekylab.codeshare.network.PeerDiscovery;
 import net.geekylab.codeshare.Icons;
 import net.geekylab.codeshare.network.ReceivedInterface;
 import net.geekylab.codeshare.network.tcp.ShareCodeTcpServer;
+import org.json.JSONObject;
 
 import java.awt.*;
 import java.io.IOException;
@@ -33,7 +35,14 @@ public class ShareServerAction extends AnAction {
                 EventQueue.invokeLater(new Runnable() {
                     //@Override
                     public void run() {
-                        CodeShareComponent.getInstance(project).getTabManager().openNewTab("test.java", message);
+                        try {
+                            JSONObject jsonObject = new JSONObject(message);
+                            String filename = jsonObject.getString("filename");
+                            String contents = jsonObject.getString("contents");
+                            CodeShareComponent.getInstance(project).getTabManager().openNewTab(filename, contents);
+                        } catch (JsonParseException e) {
+                            e.printStackTrace();
+                        }
                     }
                 });
             }

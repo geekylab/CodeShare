@@ -10,6 +10,7 @@ import com.intellij.openapi.vfs.VirtualFileEvent;
 import net.geekylab.codeshare.actions.dialog.ShareTabDialog;
 import net.geekylab.codeshare.network.PeerDiscovery;
 import org.jetbrains.annotations.NotNull;
+import org.json.JSONObject;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -42,17 +43,22 @@ public class ShareTabAction extends AnAction {
                             try {
                                 VirtualFile file = event.getFile();
                                 if (file.equals(virtualFile)) {
+                                    JSONObject jsonObject = new JSONObject();
+                                    jsonObject.put("filename", file.getName());
                                     Socket socket = new Socket(selectedItem.ip, 12033);
                                     InputStream in = file.getInputStream();
                                     OutputStream out = socket.getOutputStream();
+
                                     byte[] buffer = new byte[(int) file.getLength()];
                                     int read = in.read(buffer, 0, buffer.length);
                                     String msg = new String(buffer, 0, read);
-                                    out.write(msg.getBytes(), 0, msg.getBytes().length);
+                                    jsonObject.put("contents", msg);
+
+                                    byte[] jsonBytes = jsonObject.toString().getBytes();
+                                    out.write(jsonBytes, 0, jsonBytes.length);
                                     out.flush();
                                     socket.close();
                                     in.close();
-                                    System.out.println("read file and close");
                                 }
                             } catch (IOException e1) {
                                 e1.printStackTrace();
