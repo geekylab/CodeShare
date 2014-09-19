@@ -15,7 +15,7 @@ https://raw.githubusercontent.com/geekylab/CodeShare/master/repo.xml
 
 Add repoositorie url in IDE.
 
-![how to test](https://github.com/geekylab/CodeShare/raw/master/screen2.gif)
+![how to test](https://github.com/geekylab/CodeShare/raw/master/screen3.gif)
 
 
 
