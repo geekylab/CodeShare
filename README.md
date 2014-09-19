@@ -11,3 +11,11 @@ repo url
 
 https://raw.githubusercontent.com/geekylab/CodeShare/master/repo.xml
 
+# how to test the plugin
+
+Add repoositorie url in IDE.
+
+![how to test](https://github.com/geekylab/CodeShare/raw/master/screen2.gif)
+
+
+
